@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:52:43 by mabril            #+#    #+#             */
-/*   Updated: 2024/03/15 10:46:17 by mabril           ###   ########.fr       */
+/*   Updated: 2024/03/19 01:09:11 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,41 +14,46 @@
 #include <stdio.h>
 #include <unistd.h>
 
-void	ft_putstr(char *c);
+int	ft_putstr(char *c, int count);
 int		ft_putchar(char c, int count);
+int		ft_putlowexa(int num, int count);
+int		ft_putupeXa(int num, int count);
+int		ft_putnrb(int i, int count);
 
 int	ft_printf(char const *str, ...)
 {
 	int		i;
+	int		count;
 	va_list	arg;
 
 	i = 0;
+	count = 0;
 	va_start(arg, str);
 	while (str[i])
 	{
 		if (str[i] == '%')
 		{
 			if (str[i + 1] == 'c')
-				count = count + ft_putchar(va_arg(arg, char), count);
+				count = count + ft_putchar((char)va_arg(arg, int), count);
 			if (str[i + 1] == 's')
 				count = count + ft_putstr(va_arg(arg, char *), count);
 			if (str[i + 1] == 'p')
 			{
+				count += ft_putstr("0x", count);
+				count += ft_putlowexa(va_arg(arg, int), count);
 			}
 			if (str[i + 1] == 'd' || str[i + 1] == 'i')
-				count = count + ft_putnum(va_arg(arg, char *), count);
+				count = count + ft_putnrb(va_arg(arg, int), count);
 			// 	if(str[i + 1] == 'u')
 			// 	{
 			// 	}
-			// 	if(str[i + 1] == 'x')
-			// 	{
-			// 	}
-			// 	if(str[i + 1] == 'X')
-			// 	{
-			// 	}
-			// 	if(str[i + 1] == '%')
-			// 	{
-			// 	}
+			if(str[i + 1] == 'x')
+					count = count + ft_putlowexa(va_arg(arg, int), count);
+			if(str[i + 1] == 'X')
+				count = count + ft_putupeXa(va_arg(arg, int), count);
+			if(str[i + 1] == '%')
+				count = count + ft_putchar('%', count);
+				
 			i++;
 		}
 		else
@@ -63,11 +68,13 @@ int	main(void)
 {
 	char	*s;
 	char	*s1;
+	char	c; 
 
+	c = 'm';
 	s = "hola mi kio";
-	s1 = "hole mi maicol";
-	ft_printf("como el prototype %s et %s\n", s, s1);
-	printf("como el real function %sokok\n", s);
+	s1 = "hola mi maicol";
+	ft_printf("como el prototype %s et %s %d %x %X %c %% %p \n", s, s1, 3456, 3456, 6558, c, "k");
+	printf("como el real function %s okok %d %x %X %c %% %p\n", s, 3456, 3456, 6558, c, "9");
 }
 // • %c Imprime un solo carácter.
 // • %s Imprime una string (como se define por defecto en C).
