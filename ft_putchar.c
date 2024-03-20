@@ -6,12 +6,11 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 18:13:05 by mabril            #+#    #+#             */
-/*   Updated: 2024/03/14 11:15:36 by mabril           ###   ########.fr       */
+/*   Updated: 2024/03/20 18:32:13 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdio.h>
+#include "ft_printf.h"
 
 int	ft_putchar(char c, int count)
 {

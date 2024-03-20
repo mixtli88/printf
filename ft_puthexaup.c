@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exa.c                                           :+:      :+:    :+:   */
+/*   ft_puthexaup.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 10:13:24 by mabril            #+#    #+#             */
-/*   Updated: 2024/03/18 23:57:12 by mike             ###   ########.fr       */
+/*   Updated: 2024/03/20 17:08:12 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <unistd.h>
+#include "ft_printf.h"
 
-int	ft_putlowexa(int num, int count)
+int	ft_puthexaup(long long int num, int count)
 {
 	long	nb;
-	int		i;
 	char	*base;
 
-	base = "0123456789abcdef";
+	base = "0123456789ABCDEF";
 	nb = num;
 	if (nb > 15)
-		ft_putlowexa(nb / 16, count);
+		count = count + ft_puthexaup(nb / 16, count);
 	nb = nb % 16;
 	write(1, &base[nb], 1);
 	count++;
-	
 	return (count);
 }
 
@@ -37,7 +34,6 @@ int	ft_putlowexa(int num, int count)
 
 // 	t = 3456;
 // 	count = 0;
-// 	ft_putlowexa(t, count);
-// 	write(1, "\n", 1);
+// 	ft_puthexaup(t, count);
 // 	return (0);
 // }

@@ -1,0 +1,93 @@
+For % format:
+Error in test 5: ft_printf("%%%c", 'x'): returned: 3, but expected: 2
+For c format:
+Error in test 2: ft_printf(" %c", 'x'): returned: 3, but expected: 2
+Error in test 4: ft_printf("%c%c%c", 'a', '\t', 'b'): returned: 7, but expected: 3
+Error in test 5: ft_printf("%cc%cc%c", 'a', '\t', 'b'): returned: 13, but expected: 5
+Error in test 6: ft_printf("%cs%cs%c", 'c', 'b', 'a'): returned: 13, but expected: 5
+For s format:
+Error in test 2: ft_printf("%s", (char *)NULL): Segmentation fault!
+     in pf_show_signal_msg pf_utils.c:51:7
+     in pf_sigsegv pf_utils.c:64:1
+  -> in ft_printf ft_printf.c:31:11
+     in test_s mandatory.c:33:2
+     in main mandatory.c:155:2
+
+=================================================================
+==52411==ERROR: AddressSanitizer: global-buffer-overflow on address 0x000106e895b5 at pc 0x00010b102b97 bp 0x7ffee8d61070 sp 0x7ffee8d60840
+READ of size 1 at 0x000106e895b5 thread T0
+    #0 0x10b102b96 in wrap_write+0x176 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x1fb96)
+    #1 0x106e7c152 in ft_memo ft_memo.c:25
+    #2 0x106e7d7e0 in ft_printf ft_printf.c:45
+    #3 0x106e496c9 in test_p mandatory.c:46
+    #4 0x106e5d2ab in main mandatory.c:155
+    #5 0x7fff671eccc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+0x000106e895b5 is located 11 bytes to the left of global variable '<string literal>' defined in 'ft_memo.c:20:9' (0x106e895c0) of size 17
+  '<string literal>' is ascii string '0123456789abcdef'
+0x000106e895b5 is located 35 bytes to the right of global variable '<string literal>' defined in 'mandatory.c:162:2' (0x106e89580) of size 18
+  '<string literal>' is ascii string 'Jh.0%4v*{)*tm\./X'
+SUMMARY: AddressSanitizer: global-buffer-overflow (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x1fb96) in wrap_write+0x176
+For p format:
+Error in test 1: ft_printf("%p", ""): returned: 29, but expected: 11
+Error in test 2: ft_printf("%p", NULL): returned: 5, but expected: 3
+Error in test 3: ft_printf("%p", (void *)-14523): Memory problems!
+     in pf_show_signal_msg pf_utils.c:51:7
+     in pf_sigabort pf_utils.c:69:1
+  -> in ft_memo ft_memo.c:26:7
+     in ft_printf ft_printf.c:45:11
+     in test_p mandatory.c:46:2
+     in main mandatory.c:156:2
+
+For d format:
+Error in test 2: ft_printf("%d", -10): returned: 4, but expected: 3
+Error in test 3: ft_printf("%d", -200000): returned: 12, but expected: 7
+Error in test 4: ft_printf("%d", -6000023): returned: 14, but expected: 8
+Error in test 9: ft_printf("%d", INT_MIN): returned: 20, but expected: 11
+Error in test 10: ft_printf("dgs%dxx", 10): returned: 13, but expected: 7
+Error in test 11: ft_printf("%d%dd%d", 1, 2, -3): returned: 10, but expected: 5
+For i format:
+Error in test 2: ft_printf("%i", -10): returned: 4, but expected: 3
+Error in test 3: ft_printf("%i", -200000): returned: 12, but expected: 7
+Error in test 4: ft_printf("%i", -6000023): returned: 14, but expected: 8
+Error in test 9: ft_printf("%i", INT_MIN): returned: 20, but expected: 11
+Error in test 10: ft_printf("dgs%ixx", 10): returned: 13, but expected: 7
+Error in test 11: ft_printf("%i%ii%i", 1, 2, -3): returned: 10, but expected: 5
+For u format:
+Error in test 11: ft_printf("dgs%uxx", 10): returned: 13, but expected: 7
+Error in test 12: ft_printf("%u%uu%u", 1, 2, -3): returned: 54, but expected: 13
+For x format:
+Error in test 13: ft_printf("dgs%xxx", 10): returned: 9, but expected: 6
+Error in test 14: ft_printf("%x%xx%x", 1, 2, -3): returned: 44, but expected: 11
+For X format:
+Error in test 13: ft_printf("dgs%Xxx", 10): returned: 9, but expected: 6
+Error in test 14: ft_printf("%X%Xx%X", 1, 2, -3): returned: 44, but expected: 11
+=================================================================
+==52420==ERROR: AddressSanitizer: global-buffer-overflow on address 0x000106e895bf at pc 0x00010b102b97 bp 0x7ffee8d922d0 sp 0x7ffee8d91aa0
+READ of size 1 at 0x000106e895bf thread T0
+    #0 0x10b102b96 in wrap_write+0x176 (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x1fb96)
+    #1 0x106e7c152 in ft_memo ft_memo.c:25
+    #2 0x106e7d7e0 in ft_printf ft_printf.c:45
+    #3 0x106e5fab3 in main mandatory.c:162
+    #4 0x7fff671eccc8 in start+0x0 (libdyld.dylib:x86_64+0x1acc8)
+
+0x000106e895bf is located 1 bytes to the left of global variable '<string literal>' defined in 'ft_memo.c:20:9' (0x106e895c0) of size 17
+  '<string literal>' is ascii string '0123456789abcdef'
+0x000106e895bf is located 45 bytes to the right of global variable '<string literal>' defined in 'mandatory.c:162:2' (0x106e89580) of size 18
+  '<string literal>' is ascii string 'Jh.0%4v*{)*tm\./X'
+SUMMARY: AddressSanitizer: global-buffer-overflow (libclang_rt.asan_osx_dynamic.dylib:x86_64h+0x1fb96) in wrap_write+0x176
+For random:
+Error in test 1: ft_printf("i,W[\r%s\vfz~`%d7;8I%X&;dydk{\vx$%%dC8D:6%s/=?%%\fj\FD\r%X89\v<d4'U}k%incnw`>d%io", "M-;-tBxV,%\"$6pEq).|\v(_KC~{{jo9BI&>Zm){:3=A^l|gaUulfof',X\f&+K\\>O<", -7154203, 1474349391, "e}zJuS^QJq];3\\D7he#%HdM}i8cc:", 2017985970, -1296736378, 849117734): returned: 11673370, but expected: 196
+Error in test 2: ft_printf("&y)Xv%i*5M[&uJ 1%X\t,%X t}ZuxNw"{%d|k%%r=^6dz\tZ%d%xP%%;B*yh&\=f#%c\fPs<l[D7|@%sgvU*tTj", 531708988, 1581226175, 385433088, 824883878, -1401488047, -1112738278, 737124867, "k_iH"): returned: 22248113, but expected: 124
+Error in test 3: ft_printf("^Pa|%x<z\vt}I4%u\rtfoEE%s~%c*uv0%s2=M%u\t,ze"N%s&x=7KM%d^7wh[=r{pF%%6h\vw2c@X", 346014909, -2119401503, "<P\n8T9XX42[\\_$vT7-GgJ&K/;N2\v\\,<L~>D!B>sQA'6%%^UV!L{\r/)!D\n\rL\vh}z0DG6R%|Y:UAee:W=3Qz=aydDY", -1286493653, "U;A#6RVs!\\RKs6u\t^:aQM)j", 1292407291, "vVJ\nA[q\\^-%>.(\f`XsGqo=f'}xUOu=]oi\v_X0[T(-^Fb!w\rG!\\mT-O/\t|8\"J", -1896166070): returned: 1213053, but expected: 267
+Error in test 4: ft_printf("lQc|\vejM.H%%'%X2;[#pvFr%% V8y=\t\rL}%p'S0'%pS\r8uf6gH%ue1lAe*!%so)", 1476071457, (void *)6439063037049565929, (void *)2950512811677930065, -2065416948, "G[,Vr5M{@X;"): returned: 3449603, but expected: 116
+Error in test 5: ft_printf("\rD+31t`y|'%uyrb$\ta8BZ.%cPP", -2037433133, 1575689465): returned: 263, but expected: 33
+Error in test 6: ft_printf("\x%x!\t9;lzc:%xR", 932395560, -1898910208): returned: 315, but expected: 27
+Error in test 7: ft_printf("+8IJ=V%x;T%ds}6Dm~ %cJfc@g.aj%iPnRuAaG2Z", -114702986, 17959000, 750149923, -264936486): returned: 11937, but expected: 59
+Error in test 8: ft_printf(".aFT[ :AXY%p:-tPCN%xV Rv}9d%c2w92in%u_`>)o5-W%s;&L[@n&a3V%i\", (void *)-8586496817424525233, 153933886, 1164187693, 1833223896, "?<oFGLFW&O4", 1609120970): Memory problems!
+     in pf_show_signal_msg pf_utils.c:51:7
+     in pf_sigabort pf_utils.c:69:1
+  -> in ft_memo ft_memo.c:26:7
+     in ft_printf ft_printf.c:45:11
+     in main mandatory.c:162:2
+

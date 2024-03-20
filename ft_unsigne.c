@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_unsigne.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 18:17:42 by mabril            #+#    #+#             */
-/*   Updated: 2024/03/20 17:08:19 by mabril           ###   ########.fr       */
+/*   Created: 2024/03/14 11:31:43 by mabril            #+#    #+#             */
+/*   Updated: 2024/03/20 17:08:25 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr(char *str, int count)
+int	ft_unsigne(unsigned int i, int count)
 {
-	int	i;
+	long	nb;
 
-	i = 0;
-	while (str[i])
-	{
-		write(1, &str[i], 1);
-		i++;
-		count++;
-	}
+	nb = i;
+	if (nb > 9)
+		count = count + ft_unsigne((nb / 10), count);
+	nb = (nb % 10) + '0';
+	write(1, &nb, 1);
+	count++;
 	return (count);
 }
+
+// int	main(void)
+// {
+// 	unsigned int	n;
+// 	int				p;
+
+// 	n = 12345;
+// 	p = 0;
+// 	ft_unsigne(n, p);
+// }

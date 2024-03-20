@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnrb.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:31:43 by mabril            #+#    #+#             */
-/*   Updated: 2024/03/18 23:56:59 by mike             ###   ########.fr       */
+/*   Updated: 2024/03/20 17:08:14 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "ft_printf.h"
 
 int	ft_putnrb(int i, int count)
 {
