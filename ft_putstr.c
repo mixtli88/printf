@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 18:17:42 by mabril            #+#    #+#             */
-/*   Updated: 2024/03/20 17:08:19 by mabril           ###   ########.fr       */
+/*   Updated: 2024/03/21 11:28:28 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ int	ft_putstr(char *str, int count)
 	int	i;
 
 	i = 0;
+	if (!str)
+	{
+		write(1, "null", 4);
+		count = 4;
+		return (count);
+	}
 	while (str[i])
 	{
 		write(1, &str[i], 1);

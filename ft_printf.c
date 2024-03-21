@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:52:43 by mabril            #+#    #+#             */
-/*   Updated: 2024/03/20 18:35:10 by mabril           ###   ########.fr       */
+/*   Updated: 2024/03/21 11:03:47 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,23 @@ int	ft_printf(char const *str, ...)
 		if (str[i] == '%')
 		{
 			if (str[i + 1] == 'c')
-				count += ft_putchar((char)va_arg(arg, int), count);
+				count = ft_putchar((char)va_arg(arg, int), count);
 			if (str[i + 1] == 's')
-				count += ft_putstr(va_arg(arg, char *), count);
+				count = ft_putstr(va_arg(arg, char *), count);
 			if (str[i + 1] == 'd' || str[i + 1] == 'i')
-				count += ft_putnrb(va_arg(arg, int), count);
+				count = ft_putnrb(va_arg(arg, int), count);
 			if (str[i + 1] == 'u')
-				count += ft_unsigne(va_arg(arg, unsigned int), count);
+				count = ft_unsigne(va_arg(arg, unsigned int), count);
 			if (str[i + 1] == 'x')
-				count += ft_puthexatit(va_arg(arg, long long int), count);
+				count = ft_puthexatit(va_arg(arg, long long int), count);
 			if (str[i + 1] == 'X')
-				count += ft_puthexaup(va_arg(arg, long long int), count);
+				count = ft_puthexaup(va_arg(arg, long long int), count);
 			if (str[i + 1] == '%')
 				count = ft_putchar('%', count);
 			if (str[i + 1] == 'p')
 			{
-				count += ft_putstr("0x", count);
-				count += ft_memo((long long int)va_arg(arg, char *), count);
+				count = ft_putstr("0x", count);
+				count = ft_memo((long long int)va_arg(arg, char *), count);
 			}
 			i++;
 		}
@@ -64,14 +64,9 @@ int	ft_printf(char const *str, ...)
 
 // 	s = " %%";
 // 	t = "hole mi maicol";
-// 	ft_printf(" %%");
+// 	printf("nbr de caractere : %d", ft_printf("%d", -10));
 // 	printf("\n");
-// 	printf("nbr de caractere : %d", ft_printf(" %%"));
-// 	printf("\n");
-	
-// 	printf("nbr de caractere : %d", printf(" %%"));
-// 	// ft_printf("como el prototype %p et %p et %p et %p \n", s, &t);
-// 	// printf("como el prototype %p et %p et %p et %p \n", t, s, &t, &s);
+// 	printf("nbr de caractere : %d", printf("%d", -10));
 // }
 // • %c Imprime un solo carácter.
 // • %s Imprime una string (como se define por defecto en C).

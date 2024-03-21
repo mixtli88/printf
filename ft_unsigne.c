@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:31:43 by mabril            #+#    #+#             */
-/*   Updated: 2024/03/20 17:08:25 by mabril           ###   ########.fr       */
+/*   Updated: 2024/03/21 11:04:34 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_unsigne(unsigned int i, int count)
 
 	nb = i;
 	if (nb > 9)
-		count = count + ft_unsigne((nb / 10), count);
+		count = ft_unsigne((nb / 10), count);
 	nb = (nb % 10) + '0';
 	write(1, &nb, 1);
 	count++;
