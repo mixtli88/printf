@@ -6,13 +6,13 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 10:13:24 by mabril            #+#    #+#             */
-/*   Updated: 2024/03/21 19:37:16 by mabril           ###   ########.fr       */
+/*   Updated: 2024/03/22 16:48:46 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_puthexaup(unsigned long long  num, int count)
+int	ft_puthexaup(unsigned long long num, int count)
 {
 	char	*base;
 
