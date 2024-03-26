@@ -6,19 +6,21 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 10:13:24 by mabril            #+#    #+#             */
-/*   Updated: 2024/03/22 16:48:46 by mabril           ###   ########.fr       */
+/*   Updated: 2024/03/25 17:00:14 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_puthexaup(unsigned long long num, int count)
+int	ft_puthexaup(unsigned int num)
 {
 	char	*base;
+	int		count;
 
 	base = "0123456789ABCDEF";
+	count = 0;
 	if (num > 15)
-		count = ft_puthexaup(num / 16, count);
+		count += ft_puthexaup(num / 16);
 	num = num % 16;
 	write(1, &base[num], 1);
 	count++;

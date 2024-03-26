@@ -1,19 +1,16 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: mabril <mabril@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/20 16:49:43 by mabril            #+#    #+#              #
-#    Updated: 2024/03/20 16:54:44 by mabril           ###   ########.fr        #
+#    Updated: 2024/03/25 17:57:02 by mabril           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-
-RM = rm -f
-
 SRCS = 	ft_memo.c	\
 		ft_printf.c \
 		ft_putchar.c \
@@ -23,24 +20,56 @@ SRCS = 	ft_memo.c	\
 		ft_putstr.c	\
 		ft_unsigne.c \
 
-OBJ = $(SRCS:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
-all: $(NAME)
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+RM = rm -f
 
-%.o: %.c
-	cc -Wall -Werror -Wextra -c $< -o $@ -I.
+$(NAME) :	$(OBJS)
+	ar crs $(NAME) $(OBJS)
 
-$(NAME): $(OBJ)
-	@$(RM) $@
-	ar rcs $@ $(OBJ)
+all :	$(NAME)
 
-clean:
-	$(RM) $(OBJ)
+clean :
+	$(RM) $(OBJS)
 
-fclean: clean
+fclean : clean 
 	$(RM) $(NAME)
 
-re: fclean all
+re : fclean all
+
+# NAME = libftprintf.a
+
+# RM = rm -f
+
+# SRCS = 	ft_memo.c	\
+# 		ft_printf.c \
+# 		ft_putchar.c \
+# 		ft_puthexaup.c \
+# 		ft_puthexatit.c	\
+# 		ft_putnrb.c	\
+# 		ft_putstr.c	\
+# 		ft_unsigne.c \
+
+# OBJ = $(SRCS:.c=.o)
+
+# all: $(NAME)
+
+# %.o: %.c
+# 	cc -Wall -Werror -Wextra -c $< -o $@ -I.
+
+# $(NAME): $(OBJ)
+# 	@$(RM) $@
+# 	ar rcs $@ $(OBJ)
+
+# clean:
+# 	$(RM) $(OBJ)
+
+# fclean: clean
+# 	$(RM) $(NAME)
+
+# re: fclean all
 
 
 

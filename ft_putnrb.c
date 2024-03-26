@@ -6,17 +6,19 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:31:43 by mabril            #+#    #+#             */
-/*   Updated: 2024/03/21 11:03:56 by mabril           ###   ########.fr       */
+/*   Updated: 2024/03/25 17:00:24 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnrb(int i, int count)
+int	ft_putnrb(int i)
 {
 	long	nb;
+	int		count;
 
 	nb = i;
+	count = 0;
 	if (nb < 0)
 	{
 		nb = -nb;
@@ -24,7 +26,7 @@ int	ft_putnrb(int i, int count)
 		count++;
 	}
 	if (nb > 9)
-		count = ft_putnrb((nb / 10), count);
+		count += ft_putnrb((nb / 10));
 	nb = (nb % 10) + '0';
 	write(1, &nb, 1);
 	count++;

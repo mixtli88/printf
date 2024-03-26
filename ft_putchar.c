@@ -6,14 +6,17 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 18:13:05 by mabril            #+#    #+#             */
-/*   Updated: 2024/03/20 18:32:13 by mabril           ###   ########.fr       */
+/*   Updated: 2024/03/25 16:59:53 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putchar(char c, int count)
+int	ft_putchar(char c)
 {
+	int	count;
+
+	count = 0;
 	write(1, &c, 1);
 	count++;
 	return (count);

@@ -6,19 +6,21 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:31:43 by mabril            #+#    #+#             */
-/*   Updated: 2024/03/21 11:04:34 by mabril           ###   ########.fr       */
+/*   Updated: 2024/03/25 17:00:35 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_unsigne(unsigned int i, int count)
+int	ft_unsigne(unsigned int i)
 {
 	long	nb;
+	int		count;
 
 	nb = i;
+	count = 0;
 	if (nb > 9)
-		count = ft_unsigne((nb / 10), count);
+		count = ft_unsigne((nb / 10));
 	nb = (nb % 10) + '0';
 	write(1, &nb, 1);
 	count++;
