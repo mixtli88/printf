@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 16:46:21 by mabril            #+#    #+#             */
-/*   Updated: 2024/03/21 19:47:18 by mabril           ###   ########.fr       */
+/*   Updated: 2024/03/26 08:44:18 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int	ft_unsigne(unsigned int i, int count);
 int	ft_putnrb(int i, int count);
 int	ft_puthexaup(unsigned long long num, int count);
 int	ft_memo(unsigned long long num, int count);
+int	ft_printf(char const *str, ...);
 
 #endif

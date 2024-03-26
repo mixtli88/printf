@@ -3,14 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mike <mike@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:52:43 by mabril            #+#    #+#             */
-/*   Updated: 2024/03/22 20:21:07 by mabril           ###   ########.fr       */
+/*   Updated: 2024/03/26 08:51:02 by mike             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static int	funtions(char c, va_list arg, int count)
+{
+	if (c == 'c')
+		count = ft_putchar((char)va_arg(arg, int), count);
+	if (c == 's')
+		count = ft_putstr(va_arg(arg, char *), count);
+	if (c == 'd' || c == 'i')
+		count = ft_putnrb(va_arg(arg, int), count);
+	if (c == 'u')
+		count = ft_unsigne(va_arg(arg, unsigned int), count);
+	if (c == 'x')
+		count = ft_puthexatit(va_arg(arg, unsigned int), count);
+	if (c == 'X')
+		count = ft_puthexaup(va_arg(arg, unsigned int), count);
+	if (c == '%')
+		count = ft_putchar('%', count);
+	if (c == 'p')
+	{
+		count = ft_putstr("0x", count);
+		count = ft_memo(va_arg(arg, unsigned long ), count);
+	}
+	return (count);
+}
 
 int	ft_printf(char const *str, ...)
 {
@@ -25,31 +49,12 @@ int	ft_printf(char const *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			if (str[i + 1] == 'c')
-				count = ft_putchar((char)va_arg(arg, int), count);
-			if (str[i + 1] == 's')
-				count = ft_putstr(va_arg(arg, char *), count);
-			if (str[i + 1] == 'd' || str[i + 1] == 'i')
-				count = ft_putnrb(va_arg(arg, int), count);
-			if (str[i + 1] == 'u')
-				count = ft_unsigne(va_arg(arg, unsigned int), count);
-			if (str[i + 1] == 'x')
-				count = ft_puthexatit(va_arg(arg, unsigned long long), count);
-			if (str[i + 1] == 'X')
-				count = ft_puthexaup(va_arg(arg, unsigned long long), count);
-			if (str[i + 1] == '%')
-				count = ft_putchar('%', count);
-			if (str[i + 1] == 'p')
-			{
-				count = ft_putstr("0x", count);
-				count = ft_memo(va_arg(arg, unsigned long long), count);
-			}
+			count = funtions(str[i + 1], arg, count);
 			i++;
 		}
 		else
 		{
-			write(1, &str[i], 1);
-			count++;
+			count = ft_putchar(str[i], count);
 		}
 		i++;
 	}
@@ -113,19 +118,6 @@ int	ft_printf(char const *str, ...)
 // int	main(void)
 // {
 // 	char	*s;
-
-// 	s = "oG@as>aBkF>Fle[b|]\tf,\\\"\f~ V?\tcldCz";
-// 	ft_printf("T_P3z%dB.`NhQ1%da%d ^CG%sKyf#E7r%xx@k7w!%x", 1305536045, 1314177561, 237778768, s, 1435038156, -199251938);
-// }
-	// printf("nbr de caractere : %d\n", ft_printf("%p", (void *)-14523));
-	// printf("\n");
-	// printf("nbr de caractere : %d\n", printf("%p", (void *)-145253));
-	// printf("%p.vx&^Kp%d&iBx+`%p.f2f<K0Ot%pc\t`-_%xaS7%XY%ioB\v",
-	// 	(void *)8508981653396230473, 689155424, (void *)3273163114108609292,
-	// (void *)-8857547745261571269, -1305046457, 1212328054, 755451723);
-	// printf("%p.vx&^Kp%d&iBx]+`%p.f2f<K0Ot%pc\t`-_{%xaS7[%XY%ioB\v[",
-	// 	(void *)8508981653396230473, 689155424, (void *)3273163114108609292,
-	// 	(void *)-8857547745261571269, -1305046457, 1212328054, 755451723);
 // • %c Imprime un solo carácter.
 // • %s Imprime una string (como se define por defecto en C).
 // • %p El puntero void * dado como argumento se imprime en formato hexadecimal.
