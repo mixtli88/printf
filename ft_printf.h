@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 16:46:21 by mabril            #+#    #+#             */
-/*   Updated: 2024/03/26 10:44:23 by mabril           ###   ########.fr       */
+/*   Updated: 2024/04/29 11:42:23 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 int	ft_putstr(char *c);
 int	ft_putchar(char c);

@@ -6,12 +6,12 @@
 #    By: mabril <mabril@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/20 16:49:43 by mabril            #+#    #+#              #
-#    Updated: 2024/03/25 17:57:02 by mabril           ###   ########.fr        #
+#    Updated: 2024/04/29 18:28:45 by mabril           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-SRCS = 	ft_memo.c	\
+SRCS = 	ft_p_memo.c	\
 		ft_printf.c \
 		ft_putchar.c \
 		ft_puthexaup.c \

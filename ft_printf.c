@@ -6,7 +6,7 @@
 /*   By: mabril <mabril@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 17:52:43 by mabril            #+#    #+#             */
-/*   Updated: 2024/03/26 10:54:10 by mabril           ###   ########.fr       */
+/*   Updated: 2024/05/03 11:23:36 by mabril           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,19 @@ static int	recurs(char c, va_list arg)
 	count = 0;
 	if (c == 'c')
 		count += ft_putchar(va_arg(arg, int));
-	if (c == 's')
+	else if (c == 's')
 		count += ft_putstr(va_arg(arg, char *));
-	if (c == 'd' || c == 'i')
+	else if (c == 'd' || c == 'i')
 		count += ft_putnrb(va_arg(arg, int));
-	if (c == 'u')
+	else if (c == 'u')
 		count += ft_unsigne(va_arg(arg, unsigned int));
-	if (c == 'x')
+	else if (c == 'x')
 		count += ft_puthexatit(va_arg(arg, unsigned int));
-	if (c == 'X')
+	else if (c == 'X')
 		count += ft_puthexaup(va_arg(arg, unsigned int));
-	if (c == '%')
+	else if (c == '%')
 		count += ft_putchar('%');
-	if (c == 'p')
+	else if (c == 'p')
 	{
 		count += ft_putstr("0x");
 		count += ft_memo(va_arg(arg, unsigned long));
@@ -50,7 +50,7 @@ int	ft_printf(const char *str, ...)
 	i = 0;
 	count = 0;
 	if (!str)
-		return (-1);
+		return (0);
 	va_start(arg, str);
 	while (str[i])
 	{
@@ -61,8 +61,22 @@ int	ft_printf(const char *str, ...)
 			ft_putchar(str[i]);
 			count++;
 		}
-		++i;
+		i++;
 	}
 	va_end(arg);
 	return (count);
 }
+
+// int	main(void)
+// {
+// 	void	*ptr;
+// 	ptr = NULL;
+
+// 	// ft_printf("\nAVEC LE VRAI PRINTF\n");
+// 	ft_printf("%%%h$$ooo%5\n");
+// 	printf("%%%ht$$ooo%5\n");
+
+// 	// printf("AVEC MON FT_PRINTF\n\n");
+// 	// printf("\n%i\n\n", ft_printf("%p", ""));
+// 	return (0);
+// // }
